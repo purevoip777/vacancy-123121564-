@@ -6,6 +6,8 @@ CREATE INDEX tparams_pers_id_param_date_index ON test_params (pers_id,param_date
 
 --в) отображение актуального (последнего по времени изменения) значения каждого параметра для заданного диапазона идентификаторов людей; 
 CREATE INDEX tparams_pers_id_param_id_index ON test_params (pers_id,param_id);
+CREATE INDEX tparams_pers_id_param_id_param_date_index ON test_params (pers_id,param_id,param_date);
+
 
 --г) отображения самого изменяемого параметра; 
 CREATE INDEX tparams_param_id_param_date_index ON test_params (param_id,param_date);
@@ -16,3 +18,4 @@ CREATE INDEX tparams_param_date_index ON test_params (param_date);
 
 
 --Индексирование столбца, по которому производится сортировка, существенно помогает увеличить скорость выполнения запроса.
+
