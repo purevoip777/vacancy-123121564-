@@ -12,7 +12,7 @@ begin
 end;
 $$
 language plpgsql;
-
+/*
 CREATE OR REPLACE FUNCTION text_to_chars(IN text) RETURNS SETOF varchar AS
 $BODY$
 DECLARE
@@ -30,4 +30,8 @@ LANGUAGE plpgsql;
 
 select sum(try_cast_int(s,0))
 from text_to_chars('"     Тридцать три коpовы,    Тридцать 3   коpовы, 30 три коpовы, /    Свежая стpока. /  33 коpовы, / Стих pодился новый, /    Как стакан паpного молока.    "') as s
+*/
+
+select sum(try_cast_int(s,0))
+from regexp_split_to_table('"     Тридцать три коpовы,    Тридцать 3   коpовы, 30 три коpовы, /    Свежая стpока. /  33 коpовы, / Стих pодился новый, /    Как стакан паpного молока.    "','[^0-9]+') as s;
 
